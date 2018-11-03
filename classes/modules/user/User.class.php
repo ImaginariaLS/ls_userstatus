@@ -14,14 +14,15 @@
  * Модуль
  *
  */
-class PluginUserstatus_ModuleUser extends ModuleORM {
-	/**
-	 * Инициализация
-	 *
-	 */
-	public function Init() {
-		parent::Init();
-	}
+class PluginUserstatus_ModuleUser extends ModuleORM
+{
+    /**
+     * Инициализация
+     *
+     */
+    public function Init()
+    {
+        parent::Init();
+    }
 
 }
-?>
