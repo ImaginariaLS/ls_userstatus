@@ -17,9 +17,22 @@
  */
 class PluginUserstatus_HookUser extends Hook
 {
+    const ConfigKey = 'userstatus';
+    const HooksArray = [
+        'template_profile_top_end'  =>  'tplProfileTopBegin',
+    ];
+
     public function RegisterHook()
     {
-        $this->AddHook('template_profile_top_end', 'tplProfileTopBegin');
+        $plugin_config_key = $this::ConfigKey;
+        foreach ($this::HooksArray as $hook => $callback) {
+            $this->AddHook(
+                $hook,
+                $callback,
+                __CLASS__,
+                Config::Get("plugin.{$plugin_config_key}.hook_priority.{$hook}") ?? 1
+            );
+        }
     }
 
     public function tplProfileTopBegin($aParams = array())
